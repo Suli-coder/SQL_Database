@@ -2,16 +2,15 @@ import "reflect-metadata"
 import { DataSource } from "typeorm";
 import { Customer } from "./Entities/customer";
 
-const dataBase= new DataSource({
+export const AppDataSource= new DataSource({
     type: "mysql",
-    host: "localhost",
+    host: "127.0.0.1",
     port: 3306,
     username: "root", 
-    password: "mscMZeoZ@l5",
+    password: "",
     database: "billing_database", 
     entities: [Customer],
     synchronize: true,
     logging: false
 });
 
-export default dataBase

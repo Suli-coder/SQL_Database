@@ -5,6 +5,7 @@ import {Customer} from "./customer";
 export class Map{
     @PrimaryGeneratedColumn()
     cartId!:number;
+    
     @PrimaryColumn()
     custId!:Customer;    
 }

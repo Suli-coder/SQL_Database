@@ -5,8 +5,10 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Customer{
     @PrimaryGeneratedColumn()
     custId!:number;
-    @Column()
+
+    @Column("varchar",{length: 100})
     firstName!:string;
-    @Column()
+    
+    @Column("varchar", {length: 100})
     lastName!:string;
 }

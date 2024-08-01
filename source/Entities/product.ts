@@ -5,11 +5,11 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Product{
     @PrimaryGeneratedColumn()
     prodId!:number;
+
     @Column()
     prodName!:string;
+    
     @Column()
     supply!:number;
-
-
 }
 
