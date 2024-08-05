@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Carts } from "./cart";
 
 
 @Entity()
@@ -6,10 +7,10 @@ export class Product{
     @PrimaryGeneratedColumn()
     prodId!:number;
 
-    @Column()
+    @Column("varchar",{length:100})
     prodName!:string;
-    
-    @Column()
-    supply!:number;
+
+    @ManyToOne(() => Carts, cart => cart.products)
+    cart!: Carts;
 }
 

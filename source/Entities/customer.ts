@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm";
+import { Carts } from "./cart";
 
 @Entity()
 export class Customer{
@@ -11,4 +11,7 @@ export class Customer{
     
     @Column("varchar", {length: 100})
     lastName!:string;
+
+    @OneToOne(() => Carts, cart => cart.cartId)
+    cartId!: Carts;
 }

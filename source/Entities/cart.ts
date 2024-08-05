@@ -1,18 +1,19 @@
-import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, ManyToOne, OneToMany } from "typeorm";
+import { Entity, PrimaryColumn, OneToMany, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import {Product} from "./product";
-import {Map} from "./map";
+import { Customer } from "./customer";
 
 @Entity()
-export class Cart{
-    @PrimaryColumn()
-    cartId!:Map;
+export class Carts{
+    @PrimaryGeneratedColumn()
+    cartId!:number;
     
     //many products can be in one cart; so one to mnay, cart to products
-    @PrimaryColumn()
-    prod!:Product;
+    @OneToMany(() => Product, product => product.cart)
+    products!: Product[];
 
-    @Column()
-    quantity!:number;
+    @OneToOne(() => Customer, customer => customer.custId)
+    @JoinColumn({name: 'custId'})
+    customer!: Customer;
+    
 }
 
-export default Cart;
